@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.pvmeira.cobranca.CobrancaApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.804 sec - in com.pvmeira.cobranca.CobrancaApplicationTests
