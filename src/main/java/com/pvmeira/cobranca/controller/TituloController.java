@@ -14,34 +14,41 @@ import com.pvmeira.cobranca.model.StatusTitulo;
 import com.pvmeira.cobranca.model.Titulo;
 import com.pvmeira.cobranca.repository.Titulos;
 
+
+
 @Controller
 @RequestMapping("/titulos")
 public class TituloController {
+	
 	@Autowired
-	Titulos titulos;
+	private Titulos titulos;
 
 	@RequestMapping("/novo")
 	public ModelAndView novo() {
 		ModelAndView mv = new ModelAndView("CadastroTitulo");
 		return mv;
 	}
-
+	
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView Salvar(Titulo titulo) {
+	public ModelAndView salvar(Titulo titulo) {
 		titulos.save(titulo);
+		
 		ModelAndView mv = new ModelAndView("CadastroTitulo");
-		mv.addObject("mensagem", "Titulo Salvo com sucesso");
+		mv.addObject("mensagem", "Título salvo com sucesso!");
 		return mv;
 	}
-
+	
 	@RequestMapping
-	public String pesquisar() {
-		return "PesquisaTitulos";
+	public ModelAndView pesquisar() {
+		List<Titulo> todosTitulos = titulos.findAll();
+		ModelAndView mv = new ModelAndView("PesquisaTitulos");
+		mv.addObject("titulos", todosTitulos);
+		return mv;
 	}
-
+	
 	@ModelAttribute("todosStatusTitulo")
 	public List<StatusTitulo> todosStatusTitulo() {
 		return Arrays.asList(StatusTitulo.values());
 	}
-
+	
 }
