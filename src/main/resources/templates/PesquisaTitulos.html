@@ -12,10 +12,11 @@
 <div layout:include="MensagemGeral"></div>
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<div class="clearfix">
+		
+			<div class="clearfix">	
 				<h1 class="panel-title aw-titulo-panel">Pesquisa de títulos</h1>
-				<a class="btn btn-link aw-link-panel" href="/titulos/novo">Novo
-					título</a>
+				
+				<a class="btn btn-link aw-link-panel" href="/titulos/novo" title="Novo titulo" rel="tooltip" data-placement="top">Novotítulo</a>
 			</div>
 		</div>
 
@@ -41,13 +42,16 @@
 							th:text="${titulo.status.descricao}"
 							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}"></span>
 						</td>
-						<td class="text-center"><a class="btn btn-link btn-xs"
-							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> 
+						<td class="text-center">
+						<a class="btn btn-link btn-xs"
+							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}" 
+							title="Editar" rel="tooltip" data-placement="top"> 
 							<span class="glyphicon glyphicon-pencil"></span>
 						</a>
 						<a class="btn btn-link btn-xs" data-toggle="modal"
-							data-target="#confirmacaoExclusaoModal" th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}"> <span
-								class="glyphicon glyphicon-remove"></span>
+							data-target="#confirmacaoExclusaoModal" th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}" 
+							title="Excluir" rel="tooltip" data-placement="top"> 
+							<span class="glyphicon glyphicon-remove"></span>
 						</a></td>
 						
 					</tr>
