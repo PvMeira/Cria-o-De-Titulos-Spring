@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
@@ -40,9 +41,15 @@ public class TituloController {
 			return CADASTRO_VIEW;
 		}
 
-		titulos.save(titulo);
-		atributes.addFlashAttribute("mensagem", "Título salvo com sucesso!");
-		return "redirect:/titulos/novo";
+		try {
+			titulos.save(titulo);
+			atributes.addFlashAttribute("mensagem", "Título salvo com sucesso!");
+			return "redirect:/titulos/novo";
+		} catch (DataIntegrityViolationException e) {
+
+			errors.reject("dataVencimento", null, "Formato de data Inválido");
+			return CADASTRO_VIEW;
+		}
 	}
 
 	@RequestMapping
@@ -59,8 +66,9 @@ public class TituloController {
 		mv.addObject(titulo);
 		return mv;
 	}
-	@RequestMapping(value="{codigo}",method= RequestMethod.DELETE)
-	public String excluir(@PathVariable Long codigo,RedirectAttributes atributes){
+
+	@RequestMapping(value = "{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes atributes) {
 		titulos.delete(codigo);
 		atributes.addFlashAttribute("mensagem", "Título exluído com sucesso!");
 		return "redirect:/titulos";
