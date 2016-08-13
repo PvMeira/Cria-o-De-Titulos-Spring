@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: cobranca
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Isabela
+Built-By: Pedro
 Implementation-Vendor-Id: com.pvmeira
 Build-Jdk: 1.8.0_101
 Implementation-URL: http://projects.spring.io/spring-boot/cobranca/
