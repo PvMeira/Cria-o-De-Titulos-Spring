@@ -5,7 +5,7 @@
 	layout:decorator="LayoutPadrao">
 
 <head>
-<title>Pesquisa de títulos</title>
+<title>Pesquisa de Títulos</title>
 </head>
 
 <section layout:fragment="conteudo">
@@ -14,9 +14,10 @@
 		<div class="panel-heading">
 		
 			<div class="clearfix">	
-				<h1 class="panel-title aw-titulo-panel">Pesquisa de títulos</h1>
+				<h1 class="panel-title aw-titulo-panel">Pesquisa de Títulos</h1>			
+				<a class="btn btn-link aw-link-panel" href="/titulos/novo" title="Novo titulo" rel="tooltip" data-placement="top">Novo Título
 				
-				<a class="btn btn-link aw-link-panel" href="/titulos/novo" title="Novo titulo" rel="tooltip" data-placement="top">Novotítulo</a>
+				</a>
 			</div>
 		</div>
 
@@ -25,11 +26,11 @@
 				<thead>
 					<tr>
 						<th class="text-center col-md-1">#</th>
-						<th>Decrição</th>
+						<th class="text-center col-md-2">Decrição</th>
 						<th class="text-center col-md-2">Data de vencimento</th>
-						<th class="text-right col-md-2">Valor</th>
+						<th class="text-center col-md-2">Valor</th>
 						<th class="text-center col-md-2">Status</th>
-						<th class="col-md-1"></th>
+						<th class="text-center col-md-1">Ações</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -43,15 +44,17 @@
 							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}"></span>
 						</td>
 						<td class="text-center">
+						
 						<a class="btn btn-link btn-xs"
 							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}" 
 							title="Editar" rel="tooltip" data-placement="top"> 
 							<span class="glyphicon glyphicon-pencil"></span>
 						</a>
+					
 						<a class="btn btn-link btn-xs" data-toggle="modal"
 							data-target="#confirmacaoExclusaoModal" th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}" 
-							title="Excluir" rel="tooltip" data-placement="top"> 
-							<span class="glyphicon glyphicon-remove"></span>
+							title="Excluir" rel="tooltip" data-placement="top">							
+							<span class="glyphicon glyphicon-remove"></span>						
 						</a></td>
 						
 					</tr>

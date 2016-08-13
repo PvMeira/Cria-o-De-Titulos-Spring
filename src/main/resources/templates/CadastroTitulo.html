@@ -5,7 +5,7 @@
     layout:decorator="LayoutPadrao">
 
 <head>
-	<title>Cadastro de título</title>
+	<title>Cadastro de Título</title>
 </head>
 
 <section layout:fragment="conteudo">
@@ -16,8 +16,8 @@
     	<div class="panel panel-default">
     		<div class="panel-heading">
     			<div class="clearfix">
-	   				<h1 class="panel-title aw-titulo-panel">Novo título</h1>
-	   				<a class="btn btn-link aw-link-panel" href="/titulos" title="Voltar" rel="tooltip" data-placement="top">Voltar para pesquisa</a>
+	   				<h1 class="panel-title aw-titulo-panel">Novo Título</h1>
+	   				<a class="btn btn-link aw-link-panel" href="/titulos" title="Voltar" rel="tooltip" data-placement="top">Voltar para Pesquisa</a>
 	   			</div>
     		</div>
     		
@@ -30,7 +30,7 @@
 					</div>
 				</div>
 				<div class="form-group" th:classappend="${#fields.hasErrors('dataVencimento')} ? has-error">
-					<label for="dataVencimento" class="col-sm-2 control-label">Data de vencimento</label>
+					<label for="dataVencimento" class="col-sm-2 control-label">Data de Vencimento</label>
 					<div class="col-sm-2">  
 						<input type="text" class="form-control"	id="dataVencimento" th:field="*{dataVencimento}"
 						data-provide="datepicker" data-date-format="dd/mm/yyyy" data-date-language="pt-BR"
@@ -53,7 +53,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">
-						<button type="submit" class="btn btn-primary" title="Salvar" rel="tooltip" data-placement="top">Salvar</button>
+						<button type="submit" class="btn btn-primary" title="Salvar" >Salvar</button>
 					</div>
 				</div>
 			</div>
