@@ -11,22 +11,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.pvmeira.cobranca.model.StatusTitulo;
 import com.pvmeira.cobranca.model.Titulo;
-import com.pvmeira.cobranca.repository.Titulos;
+import com.pvmeira.cobranca.repository.filter.TituloFilter;
 import com.pvmeira.cobranca.service.CadastroTituloService;
 
 @Controller
 @RequestMapping("/titulos")
 public class TituloController {
-
-	@Autowired
-	private Titulos titulos;
 
 	@Autowired
 	private CadastroTituloService cadastroTituloService;
@@ -59,8 +55,10 @@ public class TituloController {
 	}
 
 	@RequestMapping
-	public ModelAndView pesquisar(@RequestParam (defaultValue="%")String descricao) {
-		List<Titulo> todosTitulos = titulos.findByDescricaoContaining(descricao);
+	public ModelAndView pesquisar(@ModelAttribute("filtro") TituloFilter filtro) {
+
+		List<Titulo> todosTitulos = cadastroTituloService.filtrar(filtro);
+
 		ModelAndView mv = new ModelAndView("PesquisaTitulos");
 		mv.addObject("titulos", todosTitulos);
 		return mv;
@@ -80,13 +78,11 @@ public class TituloController {
 		return "redirect:/titulos";
 	}
 
-	
-	@RequestMapping(value="/{codigo}/receber", method= RequestMethod.PUT)
-	public @ResponseBody String receber (@PathVariable Long codigo){
+	@RequestMapping(value = "/{codigo}/receber", method = RequestMethod.PUT)
+	public @ResponseBody String receber(@PathVariable Long codigo) {
 		return cadastroTituloService.receber(codigo);
 	}
-	
-	
+
 	@ModelAttribute("todosStatusTitulo")
 	public List<StatusTitulo> todosStatusTitulo() {
 		return Arrays.asList(StatusTitulo.values());

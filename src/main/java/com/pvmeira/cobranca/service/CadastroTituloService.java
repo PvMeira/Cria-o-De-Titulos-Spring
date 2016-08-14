@@ -1,5 +1,7 @@
 package com.pvmeira.cobranca.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.pvmeira.cobranca.model.StatusTitulo;
 import com.pvmeira.cobranca.model.Titulo;
 import com.pvmeira.cobranca.repository.Titulos;
+import com.pvmeira.cobranca.repository.filter.TituloFilter;
 
 @Service
 public class CadastroTituloService {
@@ -34,6 +37,12 @@ public class CadastroTituloService {
 		titulo.setStatus(StatusTitulo.RECEBIDO);
 		titulos.save(titulo);
 		return StatusTitulo.RECEBIDO.getDescricao();
+	}
+
+	public List<Titulo> filtrar(TituloFilter filtro) {
+
+		String descricao = filtro.getDescricao() == null ? "%" : filtro.getDescricao();
+		return titulos.findByDescricaoContaining(descricao);
 	}
 
 }
