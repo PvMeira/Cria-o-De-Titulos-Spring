@@ -1,6 +1,9 @@
-com\pvmeira\cobranca\CobrancaApplication.class
-com\pvmeira\cobranca\model\Titulo.class
 com\pvmeira\cobranca\controller\TituloController.class
+com\pvmeira\cobranca\service\CadastroTituloService.class
 com\pvmeira\cobranca\repository\Titulos.class
 com\pvmeira\cobranca\ServletInitializer.class
 com\pvmeira\cobranca\model\StatusTitulo.class
+com\pvmeira\cobranca\CobrancaApplication.class
+com\pvmeira\cobranca\model\Titulo.class
+com\pvmeira\cobranca\repository\filter\TituloFilter.class
+com\pvmeira\cobranca\CobrancaApplication$MvcConfig.class
